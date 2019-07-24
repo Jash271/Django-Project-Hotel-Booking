@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+{%for ro in ro %}                                                                      
+                                        
+{% if ro.Roomtypecode == val1 %}
+
+{% if ro.Availible %}
+
+
+  <h1>room type code: {{ro.Roomtypecode}}</h1> 
+  <h1>room code: {{ro.Roomcode}}</h1>
+  <h3>room type: {{ro.typename}}</h3>
+  <h3>capacity: {{ro.capacity}}</h3>
+  <h3><li><a href="book">Book</a></li></h3>
+
+{% endif %}
+
+
+{% endif %}
+
+{% endfor %}
+</body>
+</html>

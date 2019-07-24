@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1> Enter Details </h1>
+<form action="confirm" method="POST">
+    {% csrf_token %}
+        enter  first name <input type="text" name='name' required>
+        enter  aadhar number <input type="text" name='no' required>
+        enter no of children<input type="number" name='child' required>
+        enter no of adults <input type="number" name='adult' required>
+        Room_code<input type="number" name='room_code' required>
+        No of nights<input type="number" name='nights' required>
+        check in date<input type="date" name="checkin" required>
+       
+
+<input type="submit" >
+</form>
+</body>
+</html>

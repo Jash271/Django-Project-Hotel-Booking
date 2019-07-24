@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>Availible Rooms</h1>                                   
+  {%for ro in ro %}                                                                      
+                                                        
+  {% if ro.Availible %}
+
+  <h1>room type code:{{ro.Roomtypecode}}</h1> 
+  <h1>room code: {{ro.Roomcode}}</h1>
+  <h3>room type: {{ro.typename}}</h3>
+  <h3>capacity: {{ro.capacity}}</h3>
+  <img src="{{ro.img.url}}" alt="">
+  <h3><li><a href="book">Book</a></li></h3>
+  {% endif %}
+  {% endfor %}
+
+<h4>search by category</h4>
+
+  <form action="search" method="POST">
+ {% csrf_token %}
+    <input type="radio" name="num1" value="1" > Deluxe<br>
+    <input type="radio" name="num1" value="2"> Super Deluxe<br>
+    <input type="radio" name="num1" value="3"> Luxury(Villa)<br>
+    <input type="submit">
+  </form>
+
+</body>
+</html>
