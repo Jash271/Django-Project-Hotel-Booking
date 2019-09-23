@@ -1,1 +1,1 @@
-web:gunicorn DJANGO-PROJECT-HOTEL-BOOKING.wsgi
+web:gunicorn mod3.wsgi
