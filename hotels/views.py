@@ -3,6 +3,7 @@ from . import models
 from django.http import Http404
 from django.http import HttpResponse
 import pdb
+from django.core.mail import send_mail
 # Create your views here.
 def room(request):
     
@@ -36,6 +37,8 @@ def confirm(request):
      request.session['val9']=request.POST['room_code']
      request.session['val6']=request.POST['nights']
      request.session['val30']=request.POST['checkin']
+     request.session['var']=cost
+     request.session['val150']=request.POST['email']
      flag=0
      ro=models.rooms.objects.all()
      for ro in ro :
@@ -52,15 +55,24 @@ def confirm(request):
 
 
 
+def payment(request):
+    val8=int(request.session['val2'])
+    val10=int(request.session['val3'])
+    val11=int(request.session['val6'])
     
+    cost=(val11*((val8*1000)+(val10*500)))
+    
+    return render(request,"Payment.html",{'cost':cost})
+
+
    
    
 
 
     
-def pay(request):
+def success(request):
     val15=request.session['val9']
-    val40=request.session['val30']
+   
     guest1=models.guest()
     guest1.Head_name=request.session['val12']
     guest1.No_of_adults=request.session['val2']
@@ -78,8 +90,9 @@ def pay(request):
                     ro.Availible=False
                     ro.save()
                     break
-
-    return render (request,"Payment.html",{'val40':val40})
+    val180=request.session['val150']
+    send_mail('Payment Received','Room Booked','workjash@hushmail.com',['{}'.format(val180)],fail_silently=True)
+    return render (request,"success.html")
 
 
 
