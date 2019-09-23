@@ -1,1 +1,1 @@
-web:gunicorn django_project.wsgi
+web:gunicorn DJANGO-PROJECT-HOTEL-BOOKING.wsgi
