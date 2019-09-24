@@ -2,7 +2,9 @@ astroid==2.2.5
 certifi==2019.6.16
 chardet==3.0.4
 colorama==0.4.1
+dj-database-url==0.5.0
 Django==2.2.4
+django-heroku==0.3.1
 django-paypal==1.0.0
 gunicorn==19.9.0
 idna==2.8
@@ -10,6 +12,7 @@ isort==4.3.21
 lazy-object-proxy==1.4.2
 mccabe==0.6.1
 Pillow==6.1.0
+psycopg2==2.8.3
 pylint==2.3.1
 pytz==2019.2
 razorpay==1.2.0
