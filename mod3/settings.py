@@ -131,4 +131,8 @@ EMAIL_HOST_USER='workjash@hushmail.com'
 EMAIL_HOST_PASSWORD='superb10'
 EMAIL_USE_TLS=True
 EMAIL_USE_SSL=False
+
+
+
+
 django_heroku.settings(locals())

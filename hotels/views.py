@@ -17,7 +17,8 @@ def search(request):
     return render(request,"search.html",{"ro":ro,"val1":val1})
 
 
-def book(request):
+def book(request,obj_id):
+    request.session['val700']=obj_id
     return render (request,"booking.html")
     
         
@@ -28,7 +29,7 @@ def confirm(request):
      val8=int(request.POST['adult'])
      val10=int(request.POST['child'])
      val11=int(request.POST['nights'])
-     val20=request.POST['room_code']
+     
      cost=(val11*((val8*1000)+(val10*500)))
      request.session['val12']=request.POST['name']
      request.session['val2']=request.POST['adult']
@@ -39,28 +40,19 @@ def confirm(request):
      request.session['val30']=request.POST['checkin']
      request.session['var']=cost
      request.session['val150']=request.POST['email']
-     flag=0
-     ro=models.rooms.objects.all()
-     for ro in ro :
-            if (ro.Roomcode==val20):
-                    if(ro.Availible==True):
-                            flag=1
+     
+     
+     return render(request,"confirm.html",{'cost':cost})
 
-     if(flag==1):
-            return render(request,"confirm.html",{'cost':cost})
-
-     else:
-            return HttpResponse("Room unavailible or invalid room code entered.Renter the form by clicking the back button ")
+     
 
 
 
 
 def payment(request):
-    val8=int(request.session['val2'])
-    val10=int(request.session['val3'])
-    val11=int(request.session['val6'])
     
-    cost=(val11*((val8*1000)+(val10*500)))
+    
+    cost=request.session['val700']
     
     return render(request,"Payment.html",{'cost':cost})
 
@@ -71,14 +63,14 @@ def payment(request):
 
     
 def success(request):
-    val15=request.session['val9']
+    
    
     guest1=models.guest()
     guest1.Head_name=request.session['val12']
     guest1.No_of_adults=request.session['val2']
     guest1.no_of_children=request.session['val3']
     guest1.Identity_no=request.session['val13']
-    guest1.Room_code=request.session['val9']
+    guest1.Room_code=request.session['val700']
     guest1.No_of_nights=request.session['val6']
 
 
@@ -86,7 +78,7 @@ def success(request):
     
     ro=models.rooms.objects.all()
     for ro in ro :
-            if (ro.Roomcode==val15):
+            if (ro.Roomcode==request.session['val700']):
                     ro.Availible=False
                     ro.save()
                     break

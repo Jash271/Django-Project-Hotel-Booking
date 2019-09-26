@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+      
+    
+    
+    
+    
+    
+    </style>
 </head>
 <body>
 
@@ -12,18 +20,19 @@
   {%for ro in ro %}                                                                      
                                                         
   {% if ro.Availible %}
-
+  <div class='room'>
   <h1>room type code:{{ro.Roomtypecode}}</h1> 
   <h1>room code: {{ro.Roomcode}}</h1>
   <h3>room type: {{ro.typename}}</h3>
   <h3>capacity: {{ro.capacity}}</h3>
   <img src="{{ro.img.url}}" alt="">
-  <h3><li><a href="book">Book</a></li></h3>
+  <h3><li><a href="book/{{ro.Roomcode}}">Book</a></li></h3>
+  </div>
   {% endif %}
   {% endfor %}
 
 <h4>search by category</h4>
-
+  <div class='form'>
   <form action="search" method="POST">
  {% csrf_token %}
     <input type="radio" name="num1" value="1" > Deluxe<br>
@@ -31,6 +40,6 @@
     <input type="radio" name="num1" value="3"> Luxury(Villa)<br>
     <input type="submit">
   </form>
-
+</div>
 </body>
 </html>

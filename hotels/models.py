@@ -9,6 +9,9 @@ class rooms(models.Model):
     img=models.ImageField( upload_to = 'pics')
     Availible=models.BooleanField(default=True)
 
+    def __int__(self):
+        return self.Roomcode
+
 
 class guest(models.Model):
     Head_name=models.CharField(max_length=100)
@@ -17,6 +20,9 @@ class guest(models.Model):
     Identity_no=models.CharField(max_length=100)
     Room_code=models.IntegerField()
     No_of_nights=models.IntegerField()
+    def __str__(self):
+        return self.Head_name
+
     
     
  
