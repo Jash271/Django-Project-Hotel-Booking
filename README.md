@@ -11,6 +11,7 @@ A hotel booking app written in Django (v2.2.4) with sqlite as DB engine.
 	$ pip3 install -r requirements.txt 
 
 	# Apply migrations by running
+	$ python3 manage.py makemigrations
 	$ python3 manage.py migrate
 
 	# Run app locally
