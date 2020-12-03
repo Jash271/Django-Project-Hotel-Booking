@@ -13,8 +13,8 @@ def room(request):
 def search(request):
     ro=models.rooms.objects.all()
     val1=request.POST['num1']
-    
-    return render(request,"search.html",{"ro":ro,"val1":val1})
+    context={'ro':ro,'val1':val1}
+    return render(request,"search.html",context)
 
 
 def book(request,obj_id):
@@ -29,7 +29,7 @@ def confirm(request):
      val8=int(request.POST['adult'])
      val10=int(request.POST['child'])
      val11=int(request.POST['nights'])
-     
+     context={'cost':cost}
      cost=(val11*((val8*1000)+(val10*500)))
      request.session['val12']=request.POST['name']
      request.session['val2']=request.POST['adult']
@@ -42,7 +42,7 @@ def confirm(request):
      request.session['val150']=request.POST['email']
      
      
-     return render(request,"confirm.html",{'cost':cost})
+     return render(request,"confirm.html",context)
 
      
 
@@ -53,8 +53,8 @@ def payment(request):
     
     
     cost=request.session['val700']
-    
-    return render(request,"Payment.html",{'cost':cost})
+    context={'cost':cost}
+    return render(request,"Payment.html",context)
 
 
    
